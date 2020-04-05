@@ -12,6 +12,25 @@ class Pictures:
 
 
     def getPictureUrls(self, group=5, pw=None):
+        """Extract the urls of the pictures in the tweets
+
+        This function is using the torrequest package in order to
+        route the requests through Tor.
+
+        Arguments:
+        ============
+
+        group:  number of requests, that are routet through the same Tor
+                circuit, before it is reset
+
+        pw:     Password used that is required by TorRequest (from torrequest)
+                to establich and reset the Tor circuit
+
+        Results:
+        ==========
+
+        list with the urls of the pictures in the tweet
+        """
 
         self.pictureURL = []
         with TorRequest(proxy_port = 9050, ctrl_port = 9051, password = pw) as tr:

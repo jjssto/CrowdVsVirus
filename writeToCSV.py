@@ -6,6 +6,7 @@ class WriteToCSV:
         self.file_name = file_name
 
     def write( self, data_list, colnames = ''):
+        '''write the csv line by line'''
         with open( self.file_name, 'w', newline='' ) as f:
             out = csv.writer(f, dialect = 'unix' )
             if colnames != '':
