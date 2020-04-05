@@ -17,7 +17,14 @@ class Pictures:
         with TorRequest(proxy_port = 9050, ctrl_port = 9051, password = pw) as tr:
             counter = 1
             for url in self.urls:
-                page = tr.get(url)
+                try:
+                    page = tr.get(url)
+                except:
+                    counter = 1
+                    tr.reset_identity()
+                    self.pictureURL.append('')
+                    continue
+
                 soup = BeautifulSoup(page.content, 'html.parser')
                 media_container = soup.findAll(
                     'div',
@@ -32,6 +39,8 @@ class Pictures:
                         str(media_container[0])
                     )
                     if m != []:
+                        for i in range(len(m)):
+                            m[i].replace('"','')
                         self.pictureURL.append( m )
                     else:
                         self.pictureURL.append( '' )
