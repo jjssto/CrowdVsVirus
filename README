@@ -1,0 +1,12 @@
+This script allows to search twitter using the package 'GetOldTweets3'
+and than tries to extract the URLs of the pictures that are part of
+the tweets.
+
+The module *pictures* makes currently use of the package *torrequest*,
+which routes requests though the Tor network. This is done in order to
+not get blocked by twitter. If you intent on applying this on a large
+scale, this solution is not ideal.
+
+In order for it to work, control port access needs to be enabled in
+torrc. Please refer to the Tor manual for further information:
+https://2019.www.torproject.org/docs/tor-manual.html.en
